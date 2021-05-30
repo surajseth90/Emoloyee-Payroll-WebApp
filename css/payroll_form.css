@@ -1,0 +1,34 @@
+*{box-sizing: border-box;}
+
+.headerContainer{
+    display: flex;
+    max-height: 30px;
+    justify-content: center;
+    margin-top: 50px;   
+}
+
+#headerIcon{
+    min-width: 6%;
+    width: 6%;
+    height: 163%;
+}
+
+.logo-content{
+    display: flex;
+    align-items: center;
+    font-size: larger;
+    max-height: 25px;
+    width: 80%;
+}
+
+#empText{
+    font-weight: bold;
+    margin-left: 4px;
+    color: #82a70c;    
+}
+
+#payrolltext{
+    font-weight: bold;
+    color: #42515f;
+    margin-left: 4px;
+}
