@@ -2,6 +2,7 @@
 
 .headerContainer{
     display: flex;
+    flex-direction:row ;
     justify-content: center;
     margin-top: 50px;   
     padding: 15px;
@@ -15,6 +16,7 @@
 
 .logo-content{
     display: flex;
+    flex-direction:row ;
     align-items: center;
     font-size: larger;
     max-height: 25px;
@@ -41,6 +43,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .form{
@@ -55,19 +58,23 @@
 
 .form-header{
     font: normal normal bold 24px/37px Roboto;
+    letter-spacing: 0px;
     color: #42515f;
+    text-transform: capitalize;
     opacity: 1;
     padding-bottom: 20px;
 }
 
 .row-content{
     display: flex;
+    flex-direction:row ;
     margin-bottom: 10px;
     align-items: center;
+    border: 0px solid green;
 }
 
-.lable{
-    min-width: 140px;
+.label{
+   min-width: 140px;
 }
 
 label{
@@ -80,6 +87,11 @@ label{
     color: #42515f;
     opacity: 1;
     font-family:Roboto;
+}
+
+.text-error{
+    margin-left: 10px;
+    color: red;
 }
 
 .input{
