@@ -8,6 +8,7 @@
     <title>Employee Payroll</title>
     <link rel="stylesheet" href="..\css\payroll_form.css">
     <script src="..\js\payroll.js"></script>
+    <script src="..\js\EmployeePayrollObject.js"></script>
 </head>
 
 <body>
@@ -64,9 +65,9 @@
             <div class="row-content">
                 <label class="label text" for="gender">Gender</label>
                 <div>
-                    <input type="radio" name="gender" id="male" value="male">
+                    <input type="radio" name="gender" id="male" class="gender" value="male">
                     <label class="text" for="female">Male</label>
-                    <input type="radio" name="gender" id="female" value="female">
+                    <input type="radio" name="gender" id="female" class="gender" value="female">
                     <label class="text" for="female">Female</label>
                 </div>
             </div>
@@ -159,7 +160,7 @@
                 <textarea class="input" id="notes" name="notes" placeholder="Type Your Notes Here"
                     style="height: 100px;"></textarea>
             </div>
-            
+
             <div class="buttonParent">
                 <a href="./home.html" class="resetButton button cancelButton">Cancel</a>
                 <div class="submit-reset">
