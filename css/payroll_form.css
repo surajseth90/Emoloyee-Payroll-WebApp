@@ -138,6 +138,11 @@ select {
     border: 1px solid grey;
     cursor: pointer;
 }
+.button:hover{
+    text-decoration: underline;
+    color: #42515f;
+    background-color:beige;
+}
 
 .submitButton {
     border: none;
