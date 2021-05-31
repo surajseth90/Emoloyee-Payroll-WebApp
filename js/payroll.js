@@ -14,3 +14,12 @@ document.getElementById("submit").onclick = function() {
     employee._salary = document.getElementById("salary").value;
     employee._notes = document.getElementById("notes").value;
 };
+
+const text = document.querySelector('#name');
+const textError = document.querySelector('.text-error');
+text.addEventListener('input', function() {
+    const regName = RegExp("^[A-Z][a-z]{2,}$");
+    if (regName.test(text.value))
+        textError.textContent = "";
+    else textError.textContent = "Invalid first name ";
+});
