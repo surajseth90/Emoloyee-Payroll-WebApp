@@ -92,6 +92,8 @@ label{
 .text-error{
     margin-left: 10px;
     color: red;
+    font-size: 12px;
+    font-style: italic;
 }
 
 .input{
