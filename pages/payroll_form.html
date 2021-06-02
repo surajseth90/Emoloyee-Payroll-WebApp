@@ -22,7 +22,7 @@
     </header>
 
     <div class="form-contain">
-        <form class="form" action="#" onsubmit="save(event);return false">
+        <form class="form" onreset="resetForm()">
             <div class="form-header">
                 Employee Payroll Form
             </div>
@@ -36,9 +36,9 @@
                 <label class="label text" for="profile">Profile image</label>
                 <div class="profile-radio-content">
                     <label>
-                        <input type="radio" id="profile1" name="profile" values="../assets/profile/._Ellipse -3.png"
+                        <input type="radio" id="profile1" name="profile" value="..\assets\header_icon.jpeg"
                             required>
-                        <img class="profile" id="imagel" src="../assets/profile/._Ellipse -3.png">
+                        <img class="profile" id="imagel" src="..\assets\header_icon.jpeg">
                     </label>
 
                     <label>
@@ -161,9 +161,9 @@
             </div>
 
             <div class="buttonParent">
-                <a href="./home.html" class="resetButton button cancelButton">Cancel</a>
+                <a href="./home_page.html" class="resetButton button cancelButton">Cancel</a>
                 <div class="submit-reset">
-                    <button class="submitButton button" type="submit" id="submit">Submit</button>
+                    <button class="submitButton button" onclick="saveForm()" id="submit">Submit</button>
                     <button class="resetButton button" type="reset" id="reset">Reset</button>
                 </div>
             </div>
