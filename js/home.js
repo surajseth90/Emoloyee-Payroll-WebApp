@@ -1,6 +1,15 @@
+let employeePayrollList;
 window.addEventListener('DOMContentLoaded', (event) => {
+    employeePayrollList = getEmployeePayrollDataFromStorage();
+    document.querySelector(".emp-count").textContent = employeePayrollList.length;
     createInnerHtml();
 });
+
+const getEmployeePayrollDataFromStorage = () =>{
+    return localStorage.getItem('EmployeePayrollList')?
+                        JSON.parse(localStorage.getItem('EmployeePayrollList')) : [] ;
+}
+
 
 const createInnerHtml = () => {
 
@@ -12,9 +21,8 @@ const createInnerHtml = () => {
         <th>Salary</th>
         <th>Start Date</th>
         <th>Actions</th> `;
-
+    if(employeePayrollList.length == 0) return;
     let innerHtml = `${headerHtml}`;
-    let employeePayrollList = creteEmployeePayrollJSON();
     for (const employeePayrollData of employeePayrollList) {
         innerHtml = `${innerHtml}
     <tr>
@@ -36,38 +44,38 @@ const createInnerHtml = () => {
     document.querySelector('#table-display').innerHTML = innerHtml;
 }
 
-const creteEmployeePayrollJSON = () => {
-    let empPayrollListLocal = [
-        {
-            _name: 'Suraj Gupta',
-            _gender: 'male',
-            _department: [
-                'Engineering',
-                'HR'
-            ],
-            _salary: '400000',
-            _startDate: '07 Apr 2020',
-            _note: 'my first joining',
-            _id: new Date().getTime(),
-            _profilePic: '../assets/profile-images/Ellipse -2.png'
-        },
-        {
-            _name: 'Sonali Rathore',
-            _gender: 'female',
-            _department: [
-                'Engineering',
-                'Finance'
-            ],
-            _salary: '800000',
-            _startDate: '01 Apr 2019',
-            _note: 'my first joining',
-            _id: new Date().getTime() + 1,
-            _profilePic: '../assets/profile-images/Ellipse -2.png'
-        }
-    ]
+// const creteEmployeePayrollJSON = () => {
+//     let empPayrollListLocal = [
+//         {
+//             _name: 'Suraj Gupta',
+//             _gender: 'male',
+//             _department: [
+//                 'Engineering',
+//                 'HR'
+//             ],
+//             _salary: '400000',
+//             _startDate: '07 Apr 2020',
+//             _note: 'my first joining',
+//             _id: new Date().getTime(),
+//             _profilePic: '../assets/profile-images/Ellipse -2.png'
+//         },
+//         {
+//             _name: 'Sonali Rathore',
+//             _gender: 'female',
+//             _department: [
+//                 'Engineering',
+//                 'Finance'
+//             ],
+//             _salary: '800000',
+//             _startDate: '01 Apr 2019',
+//             _note: 'my first joining',
+//             _id: new Date().getTime() + 1,
+//             _profilePic: '../assets/profile-images/Ellipse -2.png'
+//         }
+//     ]
 
-    return empPayrollListLocal;
-}
+//     return empPayrollListLocal;
+// }
 
 const getDeptHtml = (deptList) => {
     let deptHtml = '';
