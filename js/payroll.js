@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     name.addEventListener('input', function () {
         if (name.value.length == 0) {
             setTextValue('.text-error', "")
-            return
+            return;
         }
         try {
             (new EmployeePayroll()).name = name.value;;
@@ -63,7 +63,7 @@ const setEmpPayrollObj = () => {
     empPayrollObj._notes = getInputValueById('#notes');
     let date = getInputValueById('#day') + " " + getInputValueById('#month') + " "
         + getInputValueById('#year');
-    empPayrollObj.startDate = date;
+    empPayrollObj._startDate = date;
 }
 const createAndUpdateStorage = () => {
 
