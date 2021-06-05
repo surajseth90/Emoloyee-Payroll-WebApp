@@ -95,3 +95,9 @@ const remove = (node) => {
     createInnerHtml();
 }
 
+const update = (node) => {
+    let employeePayrollData = employeePayrollList.find(empData => empData._id == node.id)
+    if (!employeePayrollData) return;
+    localStorage.setItem('editEmp', JSON.stringify(employeePayrollData));
+    window.location.replace("../pages/payroll_form.html");
+}
