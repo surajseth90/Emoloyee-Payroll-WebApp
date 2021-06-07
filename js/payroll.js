@@ -40,7 +40,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 const saveForm = () => {
     try {
-        // setEmpPayrollObj();
         let employeePayrollData = createEmployeePayroll();
         createAndUpdateStorage(employeePayrollData);
         window.location.replace("../pages/home_page.html")
@@ -67,7 +66,6 @@ const createEmployeePayroll = () => {
     employeePayrollData.notes = getInputValueById('#notes');
     let date = getInputValueById('#day') + " " + getInputValueById('#month') + " "
         + getInputValueById('#year');
-    console.log(date);
     employeePayrollData.startDate = new Date(Date.parse(date));
     return employeePayrollData;
 }
