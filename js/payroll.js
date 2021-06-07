@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             return;
         }
         try {
-            (new EmployeePayroll()).name = name.value;
+            checkName(name.value);
             setTextValue('.text-error', "")
         } catch (e) {
             setTextValue('.text-error', e)
@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             getInputValueById('#month') + " " +
             getInputValueById('#year')));
         try {
-            (new EmployeePayroll()).startDate = startDate;
+            checkStartDate(startDate);
             setTextValue('.date-error', "")
         } catch (e) {
             setTextValue('.date-error', e)
@@ -52,7 +52,6 @@ const saveForm = () => {
 
 
 const createEmployeePayroll = () => {
-    let employeePayrollData = new EmployeePayroll();
     try {
         employeePayrollData.name = getInputValueById('#name');
     } catch (e) {
@@ -94,8 +93,8 @@ function createAndUpdateStorage(employeePayrollData) {
         if (employeePayrollCheckList == null)
             employeePayrollList.push(employeePayrollData);
         else {
-            let empCheck = employeePayrollList.find(empData => empData._id == employeePayrollCheckList._id)
-            const index = employeePayrollList.map(empData => empData._id).indexOf(employeePayrollCheckList._id);
+            let empCheck = employeePayrollList.find(empData => empData.id == employeePayrollCheckList.id)
+            const index = employeePayrollList.map(empData => empData.id).indexOf(employeePayrollCheckList.id);
             employeePayrollList.splice(index, 1, employeePayrollData);
         }
     }

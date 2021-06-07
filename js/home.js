@@ -36,8 +36,8 @@ const createInnerHtml = () => {
             <td>${employeePayrollData._salary}</td>
             <td>${stringifyDate(employeePayrollData._startDate)}</td>
             <td>
-            <img id="${employeePayrollData._id}" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
-            <img id="${employeePayrollData._id}" onclick="update(this)" src="../assets/icons/create-black-18dp.svg">
+            <img id="${employeePayrollData.id}" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
+            <img id="${employeePayrollData.id}" onclick="update(this)" src="../assets/icons/create-black-18dp.svg">
         </td>
     </tr>
         `;
@@ -57,7 +57,7 @@ const createInnerHtml = () => {
 //             _salary: '400000',
 //             _startDate: '07 Apr 2020',
 //             _note: 'my first joining',
-//             _id: new Date().getTime(),
+//             id: new Date().getTime(),
 //             _profilePic: '../assets/profile-images/Ellipse -2.png'
 //         },
 //         {
@@ -70,7 +70,7 @@ const createInnerHtml = () => {
 //             _salary: '800000',
 //             _startDate: '01 Apr 2019',
 //             _note: 'my first joining',
-//             _id: new Date().getTime() + 1,
+//             id: new Date().getTime() + 1,
 //             _profilePic: '../assets/profile-images/Ellipse -2.png'
 //         }
 //     ]
@@ -87,9 +87,9 @@ const getDeptHtml = (deptList) => {
 }
 
 const remove = (node) => {
-    let employeePayrollData = employeePayrollList.find(empData => empData._id == node.id)
+    let employeePayrollData = employeePayrollList.find(empData => empData.id == node.id)
     if (!employeePayrollData) return;
-    const index = employeePayrollList.map(empData => empData._id).indexOf(employeePayrollData._id);
+    const index = employeePayrollList.map(empData => empData.id).indexOf(employeePayrollData.id);
     employeePayrollList.splice(index, 1);
     localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
     document.querySelector(".emp-count").textContent = employeePayrollList.length;
@@ -97,7 +97,7 @@ const remove = (node) => {
 }
 
 const update = (node) => {
-    let employeePayrollData = employeePayrollList.find(empData => empData._id == node.id)
+    let employeePayrollData = employeePayrollList.find(empData => empData.id == node.id)
     if (!employeePayrollData) return;
     localStorage.setItem('editEmp', JSON.stringify(employeePayrollData));
     window.location.replace("../pages/payroll_form.html");
