@@ -1,17 +1,17 @@
 let employeePayrollList;
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    if(site_properties.use_local_storage.match("true")) {
+    if (site_properties.use_local_storage.match("true")) {
         getEmployeePayrollDataFromStorage();
     } else getEmployeePayrollDataFromServer();
-    
+
 });
 
 
 const getEmployeePayrollDataFromStorage = () => {
     employeePayrollList = localStorage.getItem('EmployeePayrollList') ?
         JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
-        processEmployeePayrollDataResponse();
+    processEmployeePayrollDataResponse();
 }
 
 const getEmployeePayrollDataFromServer = () => {
@@ -109,13 +109,28 @@ const getDeptHtml = (deptList) => {
 }
 
 const remove = (node) => {
-    let employeePayrollData = employeePayrollList.find(empData => empData.id == node.id)
-    if (!employeePayrollData) return;
-    const index = employeePayrollList.map(empData => empData.id).indexOf(employeePayrollData.id);
+    let empPayrollData = employeePayrollList.find(empData => empData.id == node.id);
+    if (!empPayrollData) return;
+    const index = employeePayrollList
+                      .map(empData => empData.id)
+                      .indexOf(empPayrollData.id);
     employeePayrollList.splice(index, 1);
-    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
-    document.querySelector(".emp-count").textContent = employeePayrollList.length;
-    createInnerHtml();
+    if (site_properties.use_local_storage.match("true")) {
+        localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
+        document.querySelector(".emp-count").textContent = employeePayrollList.length;
+        createInnerHtml();
+    } else {
+        const deleteURL = site_properties.server_url + empPayrollData.id.toString();
+        makeServiceCall("DELETE", deleteURL, true)
+            .then(responseText => {
+                document.querySelector(".emp-count").textContent = employeePayrollList.length;
+                createInnerHtml();
+            })
+            .catch(error => {
+                console.log("DELETE Error Status: " + JSON.stringify(error));
+            });
+    }
+
 }
 
 const update = (node) => {
