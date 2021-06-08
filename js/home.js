@@ -3,7 +3,8 @@ let employeePayrollList;
 window.addEventListener('DOMContentLoaded', (event) => {
     if (site_properties.use_local_storage.match("true")) {
         getEmployeePayrollDataFromStorage();
-    } else getEmployeePayrollDataFromServer();
+    } else
+    getEmployeePayrollDataFromServer();
 
 });
 
@@ -17,6 +18,7 @@ const getEmployeePayrollDataFromStorage = () => {
 const getEmployeePayrollDataFromServer = () => {
     makeServiceCall("GET", site_properties.server_url, true)
         .then(responseText => {
+            console.log(responseText);
             employeePayrollList = JSON.parse(responseText);
             processEmployeePayrollDataResponse();
         })
@@ -49,7 +51,7 @@ const createInnerHtml = () => {
     for (const employeePayrollData of employeePayrollList) {
         innerHtml = `${innerHtml}
     <tr>
-        <td><img class="profile" alt="" src="${employeePayrollData._profilePic}"></td>
+        <td><img class="profile" alt="" src="${employeePayrollData._profile}"></td>
             <td>${employeePayrollData._name}</td>
             <td>${employeePayrollData._gender}</td>
             <td>
@@ -67,38 +69,6 @@ const createInnerHtml = () => {
     document.querySelector('#table-display').innerHTML = innerHtml;
 }
 
-// const creteEmployeePayrollJSON = () => {
-//     let empPayrollListLocal = [
-//         {
-//             _name: 'Suraj Gupta',
-//             _gender: 'male',
-//             _department: [
-//                 'Engineering',
-//                 'HR'
-//             ],
-//             _salary: '400000',
-//             _startDate: '07 Apr 2020',
-//             _note: 'my first joining',
-//             id: new Date().getTime(),
-//             _profilePic: '../assets/profile-images/Ellipse -2.png'
-//         },
-//         {
-//             _name: 'Sonali Rathore',
-//             _gender: 'female',
-//             _department: [
-//                 'Engineering',
-//                 'Finance'
-//             ],
-//             _salary: '800000',
-//             _startDate: '01 Apr 2019',
-//             _note: 'my first joining',
-//             id: new Date().getTime() + 1,
-//             _profilePic: '../assets/profile-images/Ellipse -2.png'
-//         }
-//     ]
-
-//     return empPayrollListLocal;
-// }
 
 const getDeptHtml = (deptList) => {
     let deptHtml = '';
@@ -112,8 +82,8 @@ const remove = (node) => {
     let empPayrollData = employeePayrollList.find(empData => empData.id == node.id);
     if (!empPayrollData) return;
     const index = employeePayrollList
-                      .map(empData => empData.id)
-                      .indexOf(empPayrollData.id);
+        .map(empData => empData.id)
+        .indexOf(empPayrollData.id);
     employeePayrollList.splice(index, 1);
     if (site_properties.use_local_storage.match("true")) {
         localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));

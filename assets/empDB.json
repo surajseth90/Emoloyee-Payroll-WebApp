@@ -1,46 +1,40 @@
 {
   "employeePayroll": [
     {
-      "id": 1,
-      "_name": "Mark",
+      "id": 3,
+      "_name": "Suraj gupta",
+      "_profile": "..\\assets\\profile\\Ellipse -8.png",
       "_gender": "male",
       "_department": [
-        "Engineering",
-        "Finance"
+        "engineer"
       ],
       "_salary": "500000",
-      "_startDate": "29 Oct 2019",
-      "_note": "All In One",
-      "_profilePic": "../assets/profile-images/Ellipse -3.png"
+      "_startDate": null,
+      "_notes": "first job"
     },
     {
-      "id": 2,
-      "_name": "Bill Gates",
+      "id": 4,
+      "_name": "Rohit rathore",
+      "_profile": "..\\assets\\profile\\Ellipse -8.png",
       "_gender": "male",
       "_department": [
-        "Engineering"
+        "hr"
       ],
-      "_salary": "500000",
-      "_startDate": "29 Oct 2019",
-      "_note": "Terrific Engineer",
-      "_profilePic": "../assets/profile-images/Ellipse -1.png"
+      "_salary": "729300",
+      "_startDate": "2020-06-02T18:30:00.000Z",
+      "_notes": "got chill"
     },
     {
-      "_name": "Amarpa Shashanka Keerthi Kumar",
+      "id": 5,
+      "_name": "Sonali Rathore",
+      "_profile": "..\\assets\\profile\\Ellipse 1.png",
       "_gender": "female",
       "_department": [
-        "Sales"
+        "engineer"
       ],
-      "_salary": "400000",
-      "_startDate": "29 Oct 2019",
-      "_note": "",
-      "_profilePic": "../assets/profile-images/Ellipse -1.png",
-      "id": 3
-    },
-    {
-      "name": "Rahul",
-      "salary": "150000",
-      "id": 4
+      "_salary": "1100000",
+      "_startDate": "2020-04-30T18:30:00.000Z",
+      "_notes": "her dream job"
     }
   ]
 }
